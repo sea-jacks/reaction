@@ -10,11 +10,13 @@ class ListContainer extends React.Component {
     store: PropTypes.object.isRequired
   };
 
-  
-
   render() {
+    const state = this.context.store.getState();
+    const listId = this.props.list.id;
+    const cards = state.cards.filter(card => card.list_id === listId)
+
     return (
-      <List  />
+      <List list={this.props.list} cards={cards} />
     )
   }
 };

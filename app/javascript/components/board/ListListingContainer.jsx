@@ -11,13 +11,14 @@ class ListListingContainer extends React.Component {
     store: PropTypes.object.isRequired
   };
 
-
-
   render() {
-    const board = this.props.board;
+    const state = this.context.store.getState();
+    const boardId = this.props.boardId;
+    const lists = state.lists.filter(list => list.board_id === boardId);
+
     return (
       <div>
-        <ListListing />
+        <ListListing lists={lists} />
         <CreateListForm />
       </div>
     )

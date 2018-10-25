@@ -27,7 +27,7 @@ class BoardContainer extends React.Component {
       return (
         <div>
           <BoardHeader title={board.title} />
-          <ListListingContainer board={board} />
+          <ListListingContainer boardId={boardId} />
         </div>
       )
     } else {
