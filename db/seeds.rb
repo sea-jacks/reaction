@@ -18,4 +18,4 @@ Card.create(title: 'My Card2', list_id: l1.id, description: 'summary', comments_
 l2 = List.create(title: 'My List2', board_id: b.id)
 Card.create(title: 'My Card1', list_id: l2.id, description: 'summary', comments_count: 0)
 Card.create(title: 'My Card2', list_id: l2.id, description: 'summary', comments_count: 1)
-Card.create(title: 'My Card3', list_id: l2.id, description: 'summary', comments_count: 3)
+Card.create(title: 'My Card3', list_id: l2.id, description: '', comments_count: 3, due_date: DateTime.new(2018,2,3))
