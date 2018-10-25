@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const Card = (props) => {
   const labels = props.card.labels.map(labelName => {
@@ -12,7 +13,7 @@ const Card = (props) => {
                 {labels}
                 <p>{props.card.title}</p>
             </div>
-            <div className="card-icons">{props.card.due_date ? <i className="clock-icon sm-icon overdue-recent completed">{props.card.due_date}</i> : ''}{props.card.description ? <i className="description-icon sm-icon"></i> : ''}{props.card.comments_count > 0 ? <i className="comment-icon sm-icon"></i> : ''}
+            <div className="card-icons">{props.card.due_date ? <i className="clock-icon sm-icon overdue-recent completed">{moment(props.card.due_date).format('MMM DD')}</i> : ''}{props.card.description ? <i className="description-icon sm-icon"></i> : ''}{props.card.comments_count > 0 ? <i className="comment-icon sm-icon"></i> : ''}
             </div>
         </div>
     </div>
