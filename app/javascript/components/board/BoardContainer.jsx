@@ -17,17 +17,22 @@ class BoardContainer extends React.Component {
     const boardId = +this.props.match.params.id;
     store.dispatch(actions.fetchBoard(boardId));
   }
-  
+
 
   render() {
     const boardId = +this.props.match.params.id;
     const board = this.context.store.getState().boards.find(b => b.id === boardId);
-    return (
-      <div>
-        <BoardHeader title={board.title} />
-        <ListListingContainer board={board} />
-      </div>
-    )
+
+    if (board) {
+      return (
+        <div>
+          <BoardHeader title={board.title} />
+          <ListListingContainer board={board} />
+        </div>
+      )
+    } else {
+        return (null);
+    }
   }
 }
 
