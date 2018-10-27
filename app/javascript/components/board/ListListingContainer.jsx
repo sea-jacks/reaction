@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ListListing from './ListListing';
-import CreateListForm from '../list/CreateListForm';
 
 import * as actions from '../../actions/BoardActions';
 
@@ -17,10 +16,9 @@ class ListListingContainer extends React.Component {
     const lists = state.lists.filter(list => list.board_id === boardId);
 
     return (
-      <div>
-        <ListListing lists={lists} />
-        <CreateListForm />
-      </div>
+      <main>
+        <ListListing lists={lists} boardId={boardId} />
+      </main>
     )
   }
 }
