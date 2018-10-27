@@ -10,13 +10,23 @@ class ListContainer extends React.Component {
     store: PropTypes.object.isRequired
   };
 
+  state = { formOpen: false };
+
+  handleToggleTitleForm = () => {
+    this.setState({ formOpen: true });
+  }
+
   render() {
-    const state = this.context.store.getState();
+    const globalState = this.context.store.getState();
     const listId = this.props.list.id;
-    const cards = state.cards.filter(card => card.list_id === listId)
+    const cards = globalState.cards.filter(card => card.list_id === listId)
 
     return (
-      <List list={this.props.list} cards={cards} />
+      <List list={this.props.list}
+        cards={cards}
+        formOpen={this.state.formOpen}
+        onToggleFrom={this.handleToggleTitleForm}
+      />
     )
   }
 };

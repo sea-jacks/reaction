@@ -15,9 +15,10 @@ class Api::ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
+    @list.update_attributes(list_params)
     # TODO: add error handler
     if @list.save
-      render :create, status: :created
+      render :update, status: :accepted
     else
       @error = @list.errors.full_messages.join(', ')
       render 'api/shared/error', status: :unprocessable_entity
