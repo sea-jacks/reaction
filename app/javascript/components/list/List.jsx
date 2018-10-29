@@ -8,12 +8,12 @@ const List = (props) => {
   const listId = props.list.id;
 
   return (
-    <div className="list-wrapper">
+    <div className={`list-wrapper ${props.cardFormOpen ? 'add-dropdown-active' : ''}`}>
       <div className="list-background">
           <div className="list">
               <a className="more-icon sm-icon" href=""></a>
               <div onClick={props.onToggleFrom}>
-                {props.formOpen ?
+                {props.listFormOpen ?
                 <UpdateListTitleInput list={props.list} /> :
                 <p className="list-title">{props.list.title}</p>}
               </div>
@@ -23,10 +23,10 @@ const List = (props) => {
                   </div>
               </div>
               <div id="cards-container" data-id="list-1-cards">
-                  <CardListing card={props.cards}/>
+                  <CardListing listId={listId} card={props.cards}/>
               </div>
-              <CreateCardForm />
-              <div className="add-card-toggle" data-position="bottom">Add a card...</div>
+              <CreateCardForm listId={props.listId} onCardFormToggle={props.onCardFormToggle}/>
+              <div className="add-card-toggle" data-position="bottom" onClick={props.onCardFormToggle}>Add a card...</div>
           </div>
       </div>
     </div>

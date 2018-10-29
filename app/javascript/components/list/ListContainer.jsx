@@ -10,10 +10,17 @@ class ListContainer extends React.Component {
     store: PropTypes.object.isRequired
   };
 
-  state = { formOpen: false };
+  state = {
+    listFormOpen: false,
+    cardFormOpen: false,
+  };
+
+  handleCardFormToggle = () => {
+    this.setState({ cardFormOpen: !this.state.cardFormOpen});
+  }
 
   handleToggleTitleForm = () => {
-    this.setState({ formOpen: true });
+    this.setState({ listFormOpen: true });
   }
 
   render() {
@@ -24,7 +31,10 @@ class ListContainer extends React.Component {
     return (
       <List list={this.props.list}
         cards={cards}
-        formOpen={this.state.formOpen}
+        listId={listId}
+        listFormOpen={this.state.listFormOpen}
+        cardFormOpen={this.state.cardFormOpen}
+        onCardFormToggle={this.handleCardFormToggle}
         onToggleFrom={this.handleToggleTitleForm}
       />
     )
