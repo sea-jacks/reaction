@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card from './Card';
+import CardTile from './CardTile';
 
 import * as actions from '../../actions/BoardActions';
 
@@ -12,7 +12,7 @@ class CardContainer extends React.Component {
 
   render() {
     return (
-      <Card key={this.props.card.id} card={this.props.card}/>
+      <CardTile key={this.props.card.id} card={this.props.card}/>
     )
   }
 }
