@@ -1,13 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 
+
 const CardTile = (props) => {
   const labels = props.card.labels.map(labelName => {
     return (<div className={`card-label ${labelName} colorblindable`}></div>);
   });
 
   return (
-    <div className="card-background">
+    <div className="card-background" onClick={props.onOpenModal} >
         <div className="card "><i className="edit-toggle edit-icon sm-icon"></i>
             <div className="card-info">
                 {labels}

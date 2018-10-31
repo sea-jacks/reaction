@@ -1,6 +1,5 @@
 import apiClient from '../lib/ApiClient';
 import * as types from '../constants/ActionTypes';
-import * as boardActions from './BoardActions';
 
 export function fetchCardRequest() {
   return { type: types.FETCH_CARD_REQUEST };
@@ -33,7 +32,6 @@ export function fetchCard(id) {
   return function(dispatch) {
     dispatch(fetchCardRequest());
     apiClient.getCard(id, card => {
-      dispatch(boardActions.fetchBoard(card.board_id))
       dispatch(fetchCardSuccess(card))
     });
   };
