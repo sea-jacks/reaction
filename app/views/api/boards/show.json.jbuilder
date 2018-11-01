@@ -11,6 +11,7 @@ json.lists(@board.lists) do |list|
             :list_id,
             :board_id,
             :comments_count,
-            :position)
+            :position,
+            :completed)
   end
 end

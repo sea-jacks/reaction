@@ -21,16 +21,15 @@ class CardModalContainer extends React.Component {
 
   handleCloseModal = () => {
     const cardId = +this.props.match.params.id;
-    const card = this.context.store.getState().cards.find(c => c.id === cardId);  
+    const card = this.context.store.getState().cards.find(c => c.id === cardId);
     this.props.history.push(`/boards/${card.board_id}`);
   }
-
+  
   render () {
     const cardId = +this.props.match.params.id;
-    const card = this.context.store.getState().cards.find(c => c.id === cardId);  
+    const card = this.context.store.getState().cards.find(c => c.id === cardId);
 
     if (card) {
-//debugger;      
       const list = this.context.store.getState().lists.find(l => l.id === card.list_id);
       if (list) {
         return (
