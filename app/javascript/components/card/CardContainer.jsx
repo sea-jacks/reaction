@@ -1,20 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Router from 'react-router-dom';
 
-import Card from './Card';
+
+import { withRouter } from 'react-router'
+
+import CardTile from './CardTile';
 
 import * as actions from '../../actions/BoardActions';
 
 class CardContainer extends React.Component {
-  static contextTypes = {
-    store: PropTypes.object.isRequired
-  };
+  
+  handleOpenModal = () => {  
+    this.props.history.push(`/cards/${this.props.card.id}`);
+  }
 
   render() {
     return (
-      <Card key={this.props.card.id} card={this.props.card}/>
+      <CardTile key={this.props.card.id} card={this.props.card} onOpenModal={this.handleOpenModal} />
     )
   }
 }
 
-export default CardContainer;
+export default withRouter(CardContainer);

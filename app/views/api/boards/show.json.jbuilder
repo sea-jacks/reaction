@@ -10,6 +10,8 @@ json.lists(@board.lists) do |list|
             :description,
             :list_id,
             :board_id,
-            :comments_count)
+            :comments_count,
+            :position,
+            :completed)
   end
 end

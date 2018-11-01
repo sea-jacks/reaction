@@ -38,6 +38,13 @@ class Api::CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:title, :list_id, :due_date, :labels, :description, :comments_count, :completed, :position)
+    params.require(:card).permit(:title,
+                                 :list_id,
+                                 :due_date,
+                                 :labels,
+                                 :description,
+                                 :comments_count,
+                                 :completed,
+                                 :position)
   end
 end

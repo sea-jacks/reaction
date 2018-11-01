@@ -26,7 +26,7 @@ class ListContainer extends React.Component {
   render() {
     const globalState = this.context.store.getState();
     const listId = this.props.list.id;
-    const cards = globalState.cards.filter(card => card.list_id === listId)
+    const cards = globalState.cards.filter(card => card.list_id === listId);
 
     return (
       <List list={this.props.list}
