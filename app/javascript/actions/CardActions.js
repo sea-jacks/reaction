@@ -17,6 +17,14 @@ export function createCardRequest() {
   return { type: types.CREATE_CARD_REQUEST };
 }
 
+export function updateCardSuccess(card) {
+  return { type: types.UPDATE_CARD_SUCCESS, card: card };
+}
+
+export function updateCardRequest() {
+  return { type: types.UPDATE_CARD_REQUEST };
+}
+
 export function createCard(card, callback) {
   return function(dispatch) {
     dispatch(createCardRequest());
@@ -37,23 +45,13 @@ export function fetchCard(id) {
   };
 }
 
+export function updateCard(card_id, card, callback) {
+  return function(dispatch) {
+    dispatch(updateCardRequest());
+    apiClient.updateCard(card_id, card, updatedCard => {
+      dispatch(updateCardSuccess(updatedCard))
 
-// export function updateListSuccess(card) {
-//   return { type: types.UPDATE_LIST_SUCCESS, card: card };
-// }
-//
-// export function updateListRequest() {
-//   return { type: types.UPDATE_LIST_REQUEST };
-// }
-
-
-// export function updateList(card_id, card, callback) {
-//   return function(dispatch) {
-//     dispatch(updateListRequest());
-//     apiClient.updateList(card_id, card, updatedList => {
-//       dispatch(updateListSuccess(updatedList))
-//
-//       if (callback) { callback(updatedList); }
-//     })
-//   }
-// }
+      if (callback) { callback(updatedCard); }
+    })
+  }
+}

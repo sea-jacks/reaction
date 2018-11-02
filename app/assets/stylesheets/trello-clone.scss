@@ -4100,9 +4100,11 @@ main.dashboard .board-group {
   border-radius: 3px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
   font-size: 0.875rem;
-  left: 0;
+  // left: 0;
+  left: 600px;
   position: absolute;
-  top: 0;
+  // top: 0;
+  top: 300px;
   width: 300px;
   z-index: 100;
   overflow: hidden;

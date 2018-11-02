@@ -6,17 +6,21 @@ import CardModal from './CardModal';
 
 import * as cardActions from '../../actions/CardActions';
 
-
 class CardModalContainer extends React.Component {
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
 
+  state = { cardPopoverOpen: false };
 
   componentDidMount() {
     const store = this.context.store;
     const cardId = +this.props.match.params.id;
     store.dispatch(cardActions.fetchCard(cardId));
+  }
+
+  handleToggleCardPopover = () => {
+    this.setState({ cardPopoverOpen: !this.state.cardPopoverOpen });
   }
 
   handleCloseModal = () => {
@@ -40,6 +44,8 @@ class CardModalContainer extends React.Component {
               listName={list.title}
               onCloseModal={this.handleCloseModal}
               comments={comments}
+              cardPopoverOpen={this.state.cardPopoverOpen}
+              onToggleCardPopover={this.handleToggleCardPopover}
               />
           );
         } else {
