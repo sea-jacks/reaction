@@ -32,9 +32,19 @@ class CardModalContainer extends React.Component {
     if (card) {
       const list = this.context.store.getState().lists.find(l => l.id === card.list_id);
       if (list) {
-        return (
-          <CardModal card={card} listName={list.title} onCloseModal={this.handleCloseModal} />
-        );
+        const comments = this.context.store.getState().comments.filter(comment => comment.card_id === cardId)
+        if (comments) {
+          return (
+            <CardModal
+              card={card}
+              listName={list.title}
+              onCloseModal={this.handleCloseModal}
+              comments={comments}
+              />
+          );
+        } else {
+          return null;
+        }
       } else {
         return null;
       }

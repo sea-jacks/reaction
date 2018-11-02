@@ -11,6 +11,37 @@ const CardModal = (props) => {
 
   const dueDate = moment(props.card.due_date).format('MMM DD [at] hh:mm');
 
+  const timeAgo = (ms) => {
+    const msAgo = Date.now() - new Date(ms)
+    return `${msAgo} milliseconds`;
+  }
+
+  const commentLis = props.comments.map((comment) => (
+    <li key={comment.id}>
+      <div className="member-container">
+        <div className="card-member">IN</div>
+      </div>
+      <h3>Author</h3>
+      <div className="comment static-comment"><span>{comment.text}</span>
+      </div>
+      <small>{timeAgo(comment.created_at)} ago - <span className="link">Edit</span> - <span className="link">Delete</span></small>
+      <div className="comment">
+        <label>
+          <textarea required="" rows="1" defaultValue="The activities have not been implemented yet" />
+          <div>
+            <a className="light-button card-icon sm-icon"></a>
+            <a className="light-button smiley-icon sm-icon"></a>
+            <a className="light-button email-icon sm-icon"></a>
+          </div>
+          <div>
+            <p>You haven't typed anything!</p>
+            <input type="submit" className="button not-implemented" value="Save" /><i className="x-icon icon"></i>
+          </div>
+        </label>
+      </div>
+    </li>
+  ));
+
   return (
     <div id="modal-container">
       <div className="screen" onClick={props.onCloseModal} ></div>
@@ -78,59 +109,7 @@ const CardModal = (props) => {
                 <li className="not-implemented">Show Details</li>
               </ul>
               <ul className="modal-activity-list">
-                <li>
-                  <div className="member-container">
-                    <div className="card-member">TP</div>
-                  </div>
-                  <h3>Taylor Peat</h3>
-                  <div className="comment static-comment"><span>The activities are not functional.</span>
-                  </div>
-                  <small>22 minutes ago - <span className="link">Edit</span> - <span className="link">Delete</span></small>
-                  <div className="comment">
-                    <label>
-                      <textarea required="" rows="1" defaultValue="The activities have not been implemented yet" />
-                      <div>
-                        <a className="light-button card-icon sm-icon"></a>
-                        <a className="light-button smiley-icon sm-icon"></a>
-                        <a className="light-button email-icon sm-icon"></a>
-                      </div>
-                      <div>
-                        <p>You haven't typed anything!</p>
-                        <input type="submit" className="button not-implemented" value="Save" /><i className="x-icon icon"></i>
-                      </div>
-                    </label>
-                  </div>
-                </li>
-                <li>
-                  <div className="member-container">
-                    <div className="card-member small-size">VR</div>
-                  </div>
-                  <p><span className="member-name">Victor Reyes</span> changed the background of this board <small>yesterday at 4:53 PM</small>
-                  </p>
-                </li>
-                <li className="activity-comment">
-                  <div className="member-container">
-                    <div className="card-member">VR</div>
-                  </div>
-                  <h3>Victor Reyes</h3>
-                  <div className="comment static-comment"><span>Example of a comment.</span>
-                  </div>
-                  <small>22 minutes ago - <span className="link">Edit</span> - <span className="link">Delete</span></small>
-                  <div className="comment">
-                    <label>
-                      <textarea required="" rows="1" defaultValue="Example of a comment." />
-                      <div>
-                        <a className="light-button card-icon sm-icon"></a>
-                        <a className="light-button smiley-icon sm-icon"></a>
-                        <a className="light-button email-icon sm-icon"></a>
-                      </div>
-                      <div>
-                        <p>You haven't typed anything!</p>
-                        <input type="submit" className="button not-implemented" value="Save" /><i className="x-icon icon"></i>
-                      </div>
-                    </label>
-                  </div>
-                </li>
+                {commentLis}
               </ul>
             </li>
           </ul>
